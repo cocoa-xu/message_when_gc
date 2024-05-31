@@ -20,7 +20,7 @@ defmodule MessageWhenGc.MixProject do
 
   defp deps do
     [
-      {:elixir_make, "~> 0.7.0"}
+      {:elixir_make, "~> 0.8.0"}
     ]
   end
 end
