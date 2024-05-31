@@ -1,0 +1,13 @@
+PRIV_DIR = $(MIX_APP_PATH)/priv
+NIF_SO = $(PRIV_DIR)/message_when_gc.dll
+
+C_SRC = $(MAKEDIR)/c_src
+CPPFLAGS = /O2 /EHsc /I"$(ERTS_INCLUDE_DIR)"
+
+build: $(NIF_SO)
+
+$(NIF_SO):
+	@ if not exist "$(PRIV_DIR)" mkdir "$(PRIV_DIR)"
+	$(CC) $(CPPFLAGS) /LD /MD /Fe$@ $(C_SRC)/message_when_gc.c 
+
+.PHONY: all

@@ -1,18 +1,8 @@
 defmodule MessageWhenGc do
-  @moduledoc """
-  Documentation for `MessageWhenGc`.
-  """
+  @moduledoc false
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> MessageWhenGc.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def message_when_gc(pid, value) do
+    MessageWhenGc.Nif.message_when_gc(pid, value)
+    nil
   end
 end

@@ -1,21 +1,21 @@
 # MessageWhenGc
 
-**TODO: Add description**
+A proof of concept project: NIF returns a reference (an `enif_make_resource_binary`) that sends a message to `pid` with `value` once the resource is GCed.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `message_when_gc` to your list of dependencies in `mix.exs`:
-
 ```elixir
-def deps do
-  [
-    {:message_when_gc, "~> 0.1.0"}
-  ]
-end
+iex> Mix.install([{:message_when_gc, github: "cocoa-xu/message_when_gc"}])
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/message_when_gc>.
+## Test
 
+```elixir
+iex> MessageWhenGc.message_when_gc(self(), "hello")
+nil
+iex> receive do msg -> IO.puts("Received message: #{inspect(msg)}") end
+destruct_message is called, send value to pid
+destruct_message end
+Received message: "hello"
+:ok
+```
