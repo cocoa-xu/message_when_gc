@@ -11,7 +11,7 @@ struct message {
 static void destruct_message(ErlNifEnv *env, void *obj) {
     printf("destruct_message is called, send value to pid\r\n");
     struct message *m = (struct message *) obj;
-    enif_send(NULL, &m->pid, m->env, m->value);
+    enif_send(env, &m->pid, m->env, m->value);
     enif_free_env(m->env);
     printf("destruct_message end\r\n");
 }
